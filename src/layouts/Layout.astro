@@ -30,7 +30,16 @@ const {
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="keywords" content={keywords} />
-		<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+		<meta id="meta-robots" name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+		<script is:inline>
+			(function() {
+				var host = window.location.hostname;
+				if (host.endsWith('.workers.dev') || host.endsWith('.pages.dev')) {
+					var el = document.getElementById('meta-robots');
+					if (el) el.setAttribute('content', 'noindex, nofollow, noarchive');
+				}
+			})();
+		</script>
 
 		<meta name="author" content="Kamlesh Choudhary (devxkamlesh)" />
 

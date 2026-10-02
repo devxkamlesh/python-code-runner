@@ -1,0 +1,15 @@
+# Block indexing on Cloudflare staging subdomains while keeping production indexed
+https://python-code-runner.devxkamlesh.workers.dev/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+https://*.workers.dev/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+https://*.pages.dev/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+# Security and cache headers for all assets
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
