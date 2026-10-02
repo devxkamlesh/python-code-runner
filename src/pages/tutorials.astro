@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const articles = [
+  {
+    title: "How to run Python code online without installation",
+    slug: "/how-to-run-python-code",
+    category: "WebAssembly execution",
+    badgeColor: "bg-[var(--g-link-soft)] text-[var(--g-link)] border-[var(--g-link-soft)]",
+    date: "October 2026",
+    readingTime: "5 min read",
+    summary: "Learn how modern browsers execute CPython 3.12 via Pyodide 0.26 WebAssembly binaries directly on device hardware with zero remote server queue delays."
+  },
+  {
+    title: "How to run a .py file online and in Windows terminal",
+    slug: "/how-to-run-py-file",
+    category: "File execution",
+    badgeColor: "bg-[var(--g-link-soft)] text-[var(--color-brand-violet)] border-[#e9d5ff]",
+    date: "October 2026",
+    readingTime: "6 min read",
+    summary: "Complete tutorial covering in-browser file uploads into the WebAssembly virtual file system, PowerShell terminal commands, and virtual environment isolation."
+  },
+  {
+    title: "How to install and run Python on Windows",
+    slug: "/python-code-runner-windows",
+    category: "Windows setup",
+    badgeColor: "bg-[var(--g-success-soft)] text-[var(--g-success)] border-[#a7f3d0]",
+    date: "October 2026",
+    readingTime: "6 min read",
+    summary: "Step-by-step installation instructions for Windows 10 and 11 covering python.org installers, winget commands, environment path variables, and PowerShell permissions."
+  },
+  {
+    title: "Common Python errors and troubleshooting guide",
+    slug: "/common-python-errors-faqs",
+    category: "Debugging reference",
+    badgeColor: "bg-[var(--g-warning-soft)] text-[var(--g-warning-deep)] border-[#fde68a]",
+    date: "October 2026",
+    readingTime: "7 min read",
+    summary: "Diagnostic guide analyzing CPython 3.12 standard error tracebacks and detailing verified code solutions for the ten most frequent runtime exceptions."
+  }
+];
+---
+
+<Layout 
+  title="Python Tutorials and Execution Guides | Python Code Runner"
+  description="Technical tutorials and execution guides covering in-browser WebAssembly runtimes, .py file execution, Windows setup, and debugging tracebacks."
+>
+  <Navbar />
+
+  <main class="flex-1 w-full bg-[var(--g-canvas)] py-12">
+    <div class="max-w-[1000px] mx-auto px-4 sm:px-6">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs font-mono text-[var(--g-mute)] mb-6">
+        <a href="/" class="hover:text-[var(--g-ink)] transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-[var(--g-ink)]">Tutorials</span>
+      </nav>
+
+      <!-- Section Header -->
+      <div class="pb-8 border-b border-[var(--g-hairline)] mb-10">
+        <span class="inline-block text-[11px] font-mono uppercase tracking-wider text-[var(--g-body)] px-2.5 py-1 bg-[var(--g-elevated)] border border-[var(--g-hairline)] rounded-full mb-3">
+          Knowledge Base
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-[-0.04em] text-[var(--g-ink)]">
+          Python tutorials and guides
+        </h1>
+        <p class="text-sm sm:text-base text-[var(--g-body)] mt-2 max-w-2xl leading-relaxed">
+          Comprehensive technical articles explaining WebAssembly execution mechanisms, command-line workflows, file system mounting, and traceback diagnosis.
+        </p>
+      </div>
+
+      <!-- Articles Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        {articles.map((item) => (
+          <a 
+            href={item.slug} 
+            class="group p-6 bg-[var(--g-elevated)] border border-[var(--g-hairline)] rounded-[12px] shadow-[var(--g-shadow-sm)] hover:border-[var(--g-ink)] transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class={`text-[10px] font-mono px-2 py-0.5 rounded border font-medium ${item.badgeColor}`}>
+                  {item.category}
+                </span>
+                <span class="text-[11px] font-mono text-[var(--g-mute)]">
+                  {item.readingTime}
+                </span>
+              </div>
+              <h2 class="text-base sm:text-lg font-semibold tracking-[-0.02em] text-[var(--g-ink)] group-hover:text-[var(--g-link)] transition-colors leading-snug">
+                {item.title}
+              </h2>
+              <p class="text-xs sm:text-sm text-[var(--g-body)] mt-2.5 leading-relaxed">
+                {item.summary}
+              </p>
+            </div>
+
+            <div class="pt-4 mt-4 border-t border-[var(--g-hairline)] flex items-center justify-between text-xs font-mono text-[var(--g-mute)]">
+              <span>{item.date}</span>
+              <span class="text-[var(--g-link)] group-hover:underline flex items-center gap-1 font-sans font-medium">
+                <span>Read guide</span>
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Bottom Interactive Runner CTA -->
+      <div class="p-8 rounded-[16px] bg-[var(--g-elevated)] border border-[var(--g-hairline)] shadow-[0px_2px_8px_rgba(0,0,0,0.04)] text-center">
+        <h2 class="text-lg sm:text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)]">
+          Ready to write and execute Python code?
+        </h2>
+        <p class="text-xs sm:text-sm text-[var(--g-mute)] mt-1.5 max-w-lg mx-auto">
+          Open our client-side WebAssembly workspace to run Python 3.12 scripts, install PyPI packages, and inspect variables directly in your browser.
+        </p>
+        <div class="mt-5">
+          <a 
+            href="/" 
+            class="inline-flex items-center gap-2 h-9 px-5 btn-primary text-xs font-semibold rounded-full transition-all shadow-sm"
+          >
+            <span>Launch Python Code Runner</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <Footer />
+</Layout>

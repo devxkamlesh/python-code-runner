@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Python Code Runner for Windows | Installation and Execution Guide"
+  description="Complete guide for installing and running Python on Windows 10 and Windows 11. Step-by-step instructions for python.org installer, winget, PowerShell, and virtual environments."
+>
+  <Navbar />
+
+  <main class="flex-1 w-full bg-[var(--g-canvas)] py-10">
+    <article class="max-w-[860px] mx-auto px-4 sm:px-6">
+      
+      <!-- Breadcrumb Navigation -->
+      <nav class="flex items-center gap-2 text-xs font-mono text-[var(--g-mute)] mb-6">
+        <a href="/" class="hover:text-[var(--g-ink)] transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-[var(--g-body)]">Guides</span>
+        <span>/</span>
+        <span class="text-[var(--g-ink)]">Python code runner for Windows</span>
+      </nav>
+
+      <!-- Article Header -->
+      <header class="pb-8 border-b border-[var(--g-hairline)] mb-10">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--g-link-soft)] text-[var(--g-link)] border border-[var(--g-link-soft)] font-medium">
+            Windows guide
+          </span>
+          <span class="text-xs text-[var(--g-mute)] font-mono">Updated October 2026</span>
+          <span class="text-xs text-[var(--g-mute)] font-mono">•</span>
+          <span class="text-xs text-[var(--g-mute)] font-mono">6 min read</span>
+        </div>
+        
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-[-0.04em] text-[var(--g-ink)] leading-tight">
+          How to install and run Python on Windows
+        </h1>
+
+        <p class="text-base text-[var(--g-body)] mt-4 leading-relaxed">
+          Windows 10 and Windows 11 do not include Python by default. You can install Python through the official installer or the Windows Package Manager, and execute scripts using PowerShell or Windows Terminal.
+        </p>
+
+        <!-- Quick Launch CTA Card -->
+        <div class="mt-6 p-4 rounded-[10px] bg-[var(--g-elevated)] border border-[var(--g-hairline)] shadow-[var(--g-shadow-sm)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div class="text-xs font-semibold text-[var(--g-ink)]">Skip local Windows setup?</div>
+            <div class="text-xs text-[var(--g-mute)] mt-0.5">Execute scripts directly inside Microsoft Edge or Google Chrome with zero software installation.</div>
+          </div>
+          <a 
+            href="/" 
+            class="h-9 px-4 btn-primary text-xs font-medium rounded-full flex items-center justify-center gap-1.5 transition-all shadow-sm shrink-0"
+          >
+            <span>Open browser runner</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      <!-- Article Body -->
+      <div class="space-y-10 text-sm text-[var(--g-body)] leading-relaxed">
+
+        <!-- Section 1 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Step 1: Download and install Python on Windows
+          </h2>
+          <p class="mb-4">
+            The Python Software Foundation publishes stable builds at python.org. For 64-bit Windows installations, download the Windows installer (64-bit) for Python 3.12.7.
+          </p>
+          <p class="mb-4">
+            Run the downloaded executable file named python-3.12.7-amd64.exe. On the first setup screen, select the checkbox labeled "Add python.exe to PATH" at the bottom of the dialog window. This setting registers the executable location in your Windows user environment variables.
+          </p>
+          <p class="mb-4">
+            Click "Install Now". On the final completion screen, click the option labeled "Disable path length limit" to remove the historic 260-character MAX_PATH limit in Windows.
+          </p>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-2">Alternative installation: Windows Package Manager (winget)</h3>
+          <p class="mb-4">
+            Windows 11 and recent builds of Windows 10 include the winget package manager client. You can install Python directly from a command prompt without opening a web browser:
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Install Python 3.12 via winget</div>
+            <div>winget install Python.Python.3.12</div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Step 2: Verify installation in PowerShell
+          </h2>
+          <p class="mb-4">
+            Close any existing terminal windows so Windows loads the updated PATH environment variables. Open PowerShell by pressing Windows Key + X and selecting "Terminal" or "Windows PowerShell".
+          </p>
+          <p class="mb-4">
+            Run the following commands to confirm that the CPython interpreter and pip package manager respond:
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Check interpreter version</div>
+            <div>python --version</div>
+            <div class="text-[var(--g-mute)] mt-1 mb-1"># Expected output: Python 3.12.7</div>
+            <div class="mt-2 text-[var(--g-mute)] mb-1"># Check pip package manager version</div>
+            <div>python -m pip --version</div>
+          </div>
+          <p class="mb-4">
+            Windows also provides the official launcher executable py.exe installed in C:\Windows\py.exe. This launcher detects all installed Python versions on your computer:
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># List all installed Python versions on Windows</div>
+            <div>py --list</div>
+          </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Step 3: Create and run your first Python script
+          </h2>
+          <p class="mb-4">
+            Create a dedicated directory for your code on your primary drive. Open PowerShell and create a directory named python-projects:
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Create workspace folder</div>
+            <div>mkdir C:\Users\kamlesh\python-projects</div>
+            <div>cd C:\Users\kamlesh\python-projects</div>
+          </div>
+          <p class="mb-4">
+            Create a file named main.py using Windows Notepad or Visual Studio Code with the following program:
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Sample main.py script</div>
+            <div>import sys</div>
+            <div>user_name = input("Enter your name: ")</div>
+            <div>{'print(f"Hello, {user_name}! Python is running on {sys.platform}.")'}</div>
+          </div>
+          <p class="mb-4">
+            Execute the file by passing its name to the python command in PowerShell:
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div>python main.py</div>
+          </div>
+          <p class="mb-4">
+            The script prompts for input and outputs the result in your terminal window before returning to the PowerShell command prompt.
+          </p>
+        </section>
+
+        <!-- Section 4 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Step 4: Set up virtual environments and install packages
+          </h2>
+          <p class="mb-4">
+            Avoid installing third-party packages into the global Python root folder. Use the built-in venv module to create an isolated environment for each project.
+          </p>
+          <p class="mb-4">
+            Generate a local virtual environment named .venv inside your project directory:
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Create virtual environment</div>
+            <div>python -m venv .venv</div>
+          </div>
+          <p class="mb-4">
+            Activate the environment by running the activation script:
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Activate environment in PowerShell</div>
+            <div>.\.venv\Scripts\Activate.ps1</div>
+          </div>
+          <p class="mb-4">
+            If PowerShell displays an execution policy error such as PSSecurityException, configure script execution permissions for your current user account:
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Allow local scripts in PowerShell</div>
+            <div>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</div>
+          </div>
+          <p class="mb-4">
+            Once activated, the command prompt displays (.venv). You can now install libraries from PyPI without administrator privileges:
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Install libraries with pip</div>
+            <div>pip install requests==2.31.0 numpy==1.26.4</div>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Troubleshooting Windows execution errors
+          </h2>
+          <p class="mb-4">
+            Three setup issues account for most execution problems on Windows machines.
+          </p>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">Windows opens Microsoft Store instead of running Python</h3>
+          <p class="mb-4">
+            Windows 10 and 11 install zero-byte executable shims in %LOCALAPPDATA%\Microsoft\WindowsApps. When Python is not on your PATH, Windows redirects typing python to the Microsoft Store. To fix this, open Windows Settings, navigate to Apps &gt; Advanced app settings &gt; App execution aliases, and turn off the toggles for "App Installer python.exe" and "App Installer python3.exe".
+          </p>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">Script window closes instantly when double-clicked</h3>
+          <p class="mb-4">
+            File Explorer executes .py files in a temporary Command Prompt session that terminates as soon as the script completes. Run your scripts from an open PowerShell prompt, or add input("Press Enter to finish...") as the final line of your file.
+          </p>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">UnicodeEncodeError with UTF-8 characters</h3>
+          <p class="mb-4">
+            Legacy Windows consoles use code page 437 (CP437) or Windows-1252. To enable UTF-8 mode across all Python processes on Windows, set the environment variable PYTHONUTF8=1 in your user settings, or run chcp 65001 in your terminal session before execution.
+          </p>
+        </section>
+
+        <!-- Comparison Table Section -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Windows local CLI versus browser runner
+          </h2>
+          <p class="mb-4">
+            Review the structural differences between desktop terminal execution and in-browser WebAssembly runners.
+          </p>
+
+          <div class="overflow-x-auto rounded-[8px] border border-[var(--g-hairline)] bg-[var(--g-elevated)] mb-4">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-[var(--g-canvas)] border-b border-[var(--g-hairline)] text-[var(--g-ink)] font-semibold">
+                  <th class="py-2.5 px-3">Capability</th>
+                  <th class="py-2.5 px-3">Windows local terminal</th>
+                  <th class="py-2.5 px-3">Browser WebAssembly runner</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[var(--g-hairline)] text-[var(--g-body)]">
+                <tr>
+                  <td class="py-2.5 px-3 font-medium text-[var(--g-ink)]">Installation needed</td>
+                  <td class="py-2.5 px-3">Yes (python.org or winget)</td>
+                  <td class="py-2.5 px-3">None (runs inside browser)</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3 font-medium text-[var(--g-ink)]">Path configuration</td>
+                  <td class="py-2.5 px-3">Requires PATH setup</td>
+                  <td class="py-2.5 px-3">Zero path setup</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3 font-medium text-[var(--g-ink)]">System disk access</td>
+                  <td class="py-2.5 px-3">Unrestricted NTFS disk read/write</td>
+                  <td class="py-2.5 px-3">Sandboxed virtual filesystem</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3 font-medium text-[var(--g-ink)]">Plot visualization</td>
+                  <td class="py-2.5 px-3">Requires desktop GUI window (Tk/Qt)</td>
+                  <td class="py-2.5 px-3">Inline visual Plots tab with PNG export</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <section class="p-6 rounded-[12px] bg-[var(--g-canvas)] border border-[var(--g-hairline)] text-center mt-12">
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-2">Run Python scripts on Windows without installing software</h3>
+          <p class="text-xs text-[var(--g-mute)] max-w-lg mx-auto mb-4">
+            Test Python 3.12 scripts, install PyPI packages, and inspect variables directly in Microsoft Edge or Google Chrome on Windows.
+          </p>
+          <a 
+            href="/" 
+            class="inline-flex items-center gap-2 h-9 px-5 btn-primary text-xs font-semibold rounded-full transition-all shadow-sm"
+          >
+            <span>Launch Windows browser runner</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </section>
+
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

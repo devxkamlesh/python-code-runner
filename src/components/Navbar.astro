@@ -1,0 +1,271 @@
+---
+// Navbar component conforming to DESIGN.md specs with black and white theme Python logo and spacious layout
+---
+
+<header class="w-full sticky top-0 z-40 border-b bg-[var(--g-elevated)] border-[var(--g-hairline)] shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-3 sm:gap-6">
+    
+    <!-- Left: Brand (Black & White Theme Python Logo + Title + Version) -->
+    <div class="flex items-center gap-6 shrink-0">
+      <a href="/" class="flex items-center gap-2.5 no-underline group shrink-0" aria-label="Python Code Runner Home">
+        <!-- Black and White Theme Python Logo -->
+        <div class="w-8 h-8 rounded-[8px] flex items-center justify-center p-1.5 transition-all group-hover:border-[var(--g-ink)] border border-[var(--g-hairline)] bg-[var(--g-canvas)] shadow-xs">
+          <svg class="w-5 h-5 text-[var(--g-ink)] transition-transform group-hover:scale-105" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(0 10.26)">
+              <!-- Upper snake: solid monochrome ink (black in light mode, crisp white in dark mode) -->
+              <path 
+                fill="currentColor" 
+                d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z"
+              />
+              <!-- Lower snake: muted monochrome (gray in light mode, zinc/slate in dark mode) -->
+              <path 
+                fill="currentColor" 
+                fill-opacity="0.45" 
+                d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z"
+              />
+            </g>
+          </svg>
+        </div>
+
+        <div class="flex items-center gap-2 shrink-0">
+          <span class="font-semibold text-sm sm:text-[15px] tracking-[-0.03em] whitespace-nowrap text-[var(--g-ink)]">
+            python code runner
+          </span>
+          <span class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-medium rounded-[4px] border border-[var(--g-hairline)] bg-[var(--g-canvas)] text-[var(--g-mute)] whitespace-nowrap">
+            v3.12 wasm
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links: Streamlined and Spacious -->
+      <nav class="hidden lg:flex items-center gap-1 text-xs text-[var(--g-body)]">
+        <a href="/" class="px-2.5 py-1.5 rounded-[6px] hover:text-[var(--g-ink)] hover:bg-[var(--g-canvas)] transition-colors font-medium text-[var(--g-ink)]">
+          Runner
+        </a>
+        <a href="/tutorials" class="px-2.5 py-1.5 rounded-[6px] hover:text-[var(--g-ink)] hover:bg-[var(--g-canvas)] transition-colors">
+          Tutorials
+        </a>
+
+        <!-- Guides Dropdown with Clean Popover -->
+        <div class="relative group">
+          <button 
+            type="button" 
+            class="px-2.5 py-1.5 rounded-[6px] hover:text-[var(--g-ink)] hover:bg-[var(--g-canvas)] transition-colors flex items-center gap-1 cursor-pointer outline-none"
+            aria-expanded="false"
+          >
+            <span>Guides</span>
+            <svg class="w-3 h-3 text-[var(--g-mute)] group-hover:text-[var(--g-ink)] transition-transform group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div class="absolute left-0 top-full pt-1.5 hidden group-hover:block group-focus-within:block z-50">
+            <div class="w-56 p-1.5 rounded-[10px] bg-[var(--g-elevated)] border border-[var(--g-hairline)] shadow-[var(--g-shadow-md)] flex flex-col gap-0.5">
+              <a href="/how-to-run-python-code" class="px-3 py-2 rounded-[6px] text-xs hover:bg-[var(--g-canvas)] hover:text-[var(--g-ink)] transition-colors flex items-center justify-between">
+                <span>Online Execution</span>
+                <span class="text-[10px] font-mono text-[var(--g-mute)]">Web</span>
+              </a>
+              <a href="/how-to-run-py-file" class="px-3 py-2 rounded-[6px] text-xs hover:bg-[var(--g-canvas)] hover:text-[var(--g-ink)] transition-colors flex items-center justify-between">
+                <span>How to Run .py Files</span>
+                <span class="text-[10px] font-mono text-[var(--g-mute)]">.py</span>
+              </a>
+              <a href="/python-code-runner-windows" class="px-3 py-2 rounded-[6px] text-xs hover:bg-[var(--g-canvas)] hover:text-[var(--g-ink)] transition-colors flex items-center justify-between">
+                <span>Windows Execution</span>
+                <span class="text-[10px] font-mono text-[var(--g-mute)]">Win11</span>
+              </a>
+              <a href="/common-python-errors-faqs" class="px-3 py-2 rounded-[6px] text-xs hover:bg-[var(--g-canvas)] hover:text-[var(--g-ink)] transition-colors flex items-center justify-between border-t border-[var(--g-hairline)] mt-1 pt-2">
+                <span>Errors &amp; FAQs</span>
+                <span class="text-[10px] font-mono text-[var(--g-mute)]">10 FAQs</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="/methodology" class="px-2.5 py-1.5 rounded-[6px] hover:text-[var(--g-ink)] hover:bg-[var(--g-canvas)] transition-colors">
+          Methodology
+        </a>
+      </nav>
+    </div>
+
+    <!-- Center/Right: Examples Dropdown (Clean, spacious, modern) -->
+    <div class="hidden xl:flex items-center relative">
+      <div class="relative flex items-center">
+        <svg class="w-3.5 h-3.5 absolute left-2.5 pointer-events-none text-[var(--g-mute)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        <select 
+          id="snippet-selector" 
+          class="h-8 pl-8 pr-7 text-xs font-medium rounded-[6px] border border-[var(--g-hairline)] bg-[var(--g-canvas)] text-[var(--g-ink)] appearance-none cursor-pointer hover:border-[var(--g-mute)] transition-colors outline-none focus:border-[var(--g-ink)]"
+          title="Load prebuilt Python script examples"
+        >
+          <option value="hello-world">Example: Hello World</option>
+          <option value="calculator">Example: Calculator</option>
+          <option value="factorial">Example: Factorial</option>
+          <option value="fibonacci">Example: Fibonacci</option>
+          <option value="prime-number">Example: Prime Number</option>
+          <option value="palindrome">Example: Palindrome</option>
+          <option value="list-sorting">Example: List Sorting</option>
+          <option value="file-handling">Example: File Handling</option>
+          <option value="classes">Example: Classes &amp; OOP</option>
+          <option value="async-python">Example: Async Python</option>
+          <option value="input-demo">Example: Input Prompt</option>
+          <option value="matplotlib">Example: Matplotlib Graphics</option>
+          <option value="auto-install-demo">Example: Auto-Install Requests</option>
+        </select>
+        <svg class="w-3 h-3 absolute right-2 pointer-events-none text-[var(--g-mute)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Right: Workspace Actions & Theme Toggle -->
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+      
+      <!-- Dark Mode Toggle -->
+      <button 
+        id="btn-toggle-dark" 
+        class="h-8 w-8 flex items-center justify-center rounded-[6px] border border-[var(--g-hairline)] bg-[var(--g-elevated)] hover:bg-[var(--g-canvas)] text-[var(--g-body)] hover:text-[var(--g-ink)] transition-colors cursor-pointer"
+        title="Toggle dark / light mode"
+        aria-label="Toggle dark mode"
+      >
+        <!-- Sun icon (visible in dark mode) -->
+        <svg class="w-4 h-4 hidden dark-hidden-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <!-- Moon icon (visible in light mode) -->
+        <svg class="w-4 h-4 dark-hidden-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <!-- Share Button -->
+      <button 
+        id="btn-share-project" 
+        class="h-8 px-2.5 text-xs font-medium rounded-[6px] flex items-center gap-1.5 transition-colors cursor-pointer border border-[var(--g-hairline)] bg-[var(--g-elevated)] hover:bg-[var(--g-canvas)] text-[var(--g-ink)]"
+        title="Share Project URL"
+      >
+        <svg class="w-3.5 h-3.5 text-[var(--g-mute)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="18" cy="5" r="3"></circle>
+          <circle cx="6" cy="12" r="3"></circle>
+          <circle cx="18" cy="19" r="3"></circle>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+        </svg>
+        <span class="hidden sm:inline">Share</span>
+      </button>
+
+      <!-- Export .py Button -->
+      <button 
+        id="btn-download-file" 
+        class="h-8 px-2.5 text-xs font-medium rounded-[6px] flex items-center gap-1.5 transition-colors cursor-pointer border border-[var(--g-hairline)] bg-[var(--g-elevated)] hover:bg-[var(--g-canvas)] text-[var(--g-ink)]"
+        title="Download .py Script"
+      >
+        <svg class="w-3.5 h-3.5 text-[var(--g-mute)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span class="hidden sm:inline">Export .py</span>
+      </button>
+
+      <!-- Reset Workspace Button -->
+      <button 
+        id="btn-reset-workspace" 
+        class="h-8 w-8 rounded-[6px] border border-transparent hover:border-[var(--g-hairline)] hover:bg-[var(--g-canvas)] text-[var(--g-mute)] hover:text-[var(--g-ink)] transition-colors cursor-pointer flex items-center justify-center"
+        title="Reset to Default Code"
+        aria-label="Reset workspace"
+      >
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="1 4 1 10 7 10"></polyline>
+          <polyline points="23 20 23 14 17 14"></polyline>
+          <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+        </svg>
+      </button>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        id="btn-mobile-nav" 
+        class="lg:hidden h-8 w-8 flex items-center justify-center rounded-[6px] border border-[var(--g-hairline)] bg-[var(--g-elevated)] text-[var(--g-ink)] transition-colors cursor-pointer"
+        title="Open navigation menu"
+        aria-label="Open mobile menu"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-nav-drawer" class="hidden lg:hidden border-t border-[var(--g-hairline)] bg-[var(--g-elevated)] px-4 py-4 space-y-3">
+    <div class="grid grid-cols-2 gap-2 text-xs">
+      <a href="/" class="p-2.5 rounded-[6px] bg-[var(--g-canvas)] border border-[var(--g-hairline)] text-[var(--g-ink)] font-medium">
+        Runner
+      </a>
+      <a href="/tutorials" class="p-2.5 rounded-[6px] bg-[var(--g-canvas)] border border-[var(--g-hairline)] text-[var(--g-body)]">
+        Tutorials
+      </a>
+      <a href="/how-to-run-python-code" class="p-2.5 rounded-[6px] bg-[var(--g-canvas)] border border-[var(--g-hairline)] text-[var(--g-body)]">
+        Online Execution
+      </a>
+      <a href="/how-to-run-py-file" class="p-2.5 rounded-[6px] bg-[var(--g-canvas)] border border-[var(--g-hairline)] text-[var(--g-body)]">
+        .py Files
+      </a>
+      <a href="/python-code-runner-windows" class="p-2.5 rounded-[6px] bg-[var(--g-canvas)] border border-[var(--g-hairline)] text-[var(--g-body)]">
+        Windows Guide
+      </a>
+      <a href="/common-python-errors-faqs" class="p-2.5 rounded-[6px] bg-[var(--g-canvas)] border border-[var(--g-hairline)] text-[var(--g-body)]">
+        Errors &amp; FAQs
+      </a>
+      <a href="/methodology" class="col-span-2 p-2.5 rounded-[6px] bg-[var(--g-canvas)] border border-[var(--g-hairline)] text-[var(--g-body)] flex items-center justify-between">
+        <span>Methodology &amp; Standards</span>
+        <span class="text-[10px] font-mono text-[var(--g-mute)]">CPython 3.12</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Dark mode toggle logic
+  const toggleBtn = document.getElementById('btn-toggle-dark');
+  const sunIcon = toggleBtn?.querySelector('.dark-hidden-sun');
+  const moonIcon = toggleBtn?.querySelector('.dark-hidden-moon');
+
+  function updateIcons() {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (sunIcon) (sunIcon as HTMLElement).style.display = isDark ? 'block' : 'none';
+    if (moonIcon) (moonIcon as HTMLElement).style.display = isDark ? 'none' : 'block';
+  }
+
+  updateIcons();
+
+  toggleBtn?.addEventListener('click', () => {
+    document.documentElement.classList.add('dark-transition');
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateIcons();
+    setTimeout(() => document.documentElement.classList.remove('dark-transition'), 300);
+  });
+
+  // Mobile drawer toggle logic
+  const mobileNavBtn = document.getElementById('btn-mobile-nav');
+  const mobileDrawer = document.getElementById('mobile-nav-drawer');
+
+  mobileNavBtn?.addEventListener('click', () => {
+    mobileDrawer?.classList.toggle('hidden');
+  });
+</script>

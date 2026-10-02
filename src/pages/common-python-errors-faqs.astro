@@ -1,0 +1,237 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Common Python Errors & FAQs | Complete Troubleshooting Guide"
+  description="Comprehensive reference for diagnosing and fixing common Python errors including SyntaxError, NameError, TypeError, and IndentationError with code examples."
+>
+  <Navbar />
+
+  <main class="flex-1 w-full bg-[var(--g-canvas)] py-10">
+    <article class="max-w-[860px] mx-auto px-4 sm:px-6">
+      
+      <!-- Breadcrumb Navigation -->
+      <nav class="flex items-center gap-2 text-xs font-mono text-[var(--g-mute)] mb-6">
+        <a href="/" class="hover:text-[var(--g-ink)] transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-[var(--g-body)]">Guides</span>
+        <span>/</span>
+        <span class="text-[var(--g-ink)]">Common Python errors & FAQs</span>
+      </nav>
+
+      <!-- Article Header -->
+      <header class="pb-8 border-b border-[var(--g-hairline)] mb-10">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--g-warning-soft)] text-[var(--g-warning-deep)] border border-[#fde68a] font-medium">
+            Troubleshooting reference
+          </span>
+          <span class="text-xs text-[var(--g-mute)] font-mono">Updated October 2026</span>
+          <span class="text-xs text-[var(--g-mute)] font-mono">•</span>
+          <span class="text-xs text-[var(--g-mute)] font-mono">7 min read</span>
+        </div>
+        
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-[-0.04em] text-[var(--g-ink)] leading-tight">
+          Common Python errors and troubleshooting guide
+        </h1>
+
+        <p class="text-base text-[var(--g-body)] mt-4 leading-relaxed">
+          Python tracebacks report the exact file name, line number, and exception type when a script crashes. Understanding how to read tracebacks allows you to identify code errors and resolve execution failures quickly.
+        </p>
+
+        <!-- Quick Launch CTA Card -->
+        <div class="mt-6 p-4 rounded-[10px] bg-[var(--g-elevated)] border border-[var(--g-hairline)] shadow-[var(--g-shadow-sm)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div class="text-xs font-semibold text-[var(--g-ink)]">Need to debug an error?</div>
+            <div class="text-xs text-[var(--g-mute)] mt-0.5">Paste your code into the runner to see educational explanations and click-to-line error jumping.</div>
+          </div>
+          <a 
+            href="/" 
+            class="h-9 px-4 btn-primary text-xs font-medium rounded-full flex items-center justify-center gap-1.5 transition-all shadow-sm shrink-0"
+          >
+            <span>Open Python runner</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      <!-- Article Body -->
+      <div class="space-y-10 text-sm text-[var(--g-body)] leading-relaxed">
+
+        <!-- Section 1 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Anatomy of a Python traceback
+          </h2>
+          <p class="mb-4">
+            When the CPython 3.12 interpreter encounters an unhandled exception, it formats an execution traceback across standard error. The traceback prints chronologically from the initial call frame down to the specific line that triggered the crash.
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Standard traceback format</div>
+            <div class="text-[var(--g-error)]">Traceback (most recent call last):</div>
+            <div>  File "/main.py", line 14, in compute_average</div>
+            <div>    return total / count</div>
+            <div class="text-[var(--g-error)] font-semibold">ZeroDivisionError: division by zero</div>
+          </div>
+          <p class="mb-4">
+            The final line names the exception class (ZeroDivisionError) and provides descriptive text explaining the failure condition. The preceding lines indicate that the failure happened inside compute_average on line 14 of main.py.
+          </p>
+        </section>
+
+        <!-- Section 2 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Ten frequent Python errors and their solutions
+          </h2>
+          <p class="mb-4">
+            These ten exception types account for the majority of execution bugs in Python scripts.
+          </p>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">1. SyntaxError: invalid syntax</h3>
+          <p class="mb-2">
+            The interpreter raises a SyntaxError during the parsing stage before any code executes. This occurs when you omit a colon after an if statement or leave a parenthesis open.
+          </p>
+          <div class="p-3 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[6px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-error)]"># Incorrect: if x == 10 print(x)</div>
+            <div class="text-[var(--g-success)]"># Correct:   if x == 10: print(x)</div>
+          </div>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">2. IndentationError: unexpected indent</h3>
+          <p class="mb-2">
+            Python uses whitespace indentation to delimit code blocks instead of curly braces. Mixing tabs and spaces triggers an IndentationError. Set your text editor to insert 4 spaces when pressing the Tab key.
+          </p>
+          <div class="p-3 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[6px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-error)]"># Incorrect mixing of indentation depths</div>
+            <div>def greet():</div>
+            <div class="text-[var(--g-error)]">  print("Hello") # 2 spaces</div>
+            <div class="text-[var(--g-error)]">    print("World") # 4 spaces triggers IndentationError</div>
+          </div>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">3. NameError: name 'variable' is not defined</h3>
+          <p class="mb-2">
+            A NameError indicates that your code referenced an identifier that does not exist in local or global scope. Common causes include misspelled variable names or referencing a variable before its assignment statement.
+          </p>
+          <div class="p-3 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[6px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-error)]"># NameError: total_score is misspelled as totle_score</div>
+            <div>total_score = 95</div>
+            <div>print(totle_score)</div>
+          </div>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">4. TypeError: can only concatenate str (not "int") to str</h3>
+          <p class="mb-2">
+            Python does not perform implicit string coercion when using the addition operator. You must explicitly convert numbers with str() or use Python 3.6 f-strings.
+          </p>
+          <div class="p-3 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[6px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-error)]"># Incorrect: print("Score: " + 95)</div>
+            <div class="text-[var(--g-success)]">{'# Correct:   print(f"Score: {95}")'}</div>
+          </div>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">5. ValueError: invalid literal for int() with base 10</h3>
+          <p class="mb-2">
+            This exception occurs when passing arbitrary strings into numerical conversion functions such as int() or float(). Validate input with str.isdigit() or enclose the conversion inside a try-except block.
+          </p>
+          <div class="p-3 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[6px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div>try:</div>
+            <div>    age = int(input("Enter age: "))</div>
+            <div>except ValueError:</div>
+            <div>    age = 0</div>
+          </div>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">6. IndexError: list index out of range</h3>
+          <p class="mb-2">
+            Python lists use zero-based indexing. A list with 5 elements contains indices from 0 through 4. Requesting index 5 raises an IndexError.
+          </p>
+          <div class="p-3 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[6px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-error)]"># IndexError</div>
+            <div>items = [10, 20, 30]</div>
+            <div>print(items[3]) # valid indices are 0, 1, 2</div>
+          </div>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">7. KeyError: 'key_name'</h3>
+          <p class="mb-2">
+            Directly indexing a dictionary with square brackets raises a KeyError if the key is missing. Use the dict.get() method with a fallback default value to avoid exceptions.
+          </p>
+          <div class="p-3 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[6px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div>{'config = {"theme": "light"}'}</div>
+            <div># Safe lookup returning None if key is missing:</div>
+            <div>font_size = config.get("fontSize", 14)</div>
+          </div>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">8. ZeroDivisionError: division by zero</h3>
+          <p class="mb-2">
+            Dividing a number by zero or performing a modulo operation by zero triggers this exception. Always test divisors for non-zero values before arithmetic operations.
+          </p>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">9. ModuleNotFoundError: No module named 'requests'</h3>
+          <p class="mb-2">
+            This exception occurs when your script imports a third-party library that is not present in sys.path. In Python Code Runner, open the Packages tab and install the library via micropip. On Windows, execute pip install requests in PowerShell.
+          </p>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-1">10. AttributeError: 'NoneType' object has no attribute 'append'</h3>
+          <p class="mb-2">
+            This error happens when you assign the return value of an in-place list method to a variable. In Python, methods like list.sort() and list.append() mutate the list in place and return None.
+          </p>
+          <div class="p-3 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[6px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-error)]"># Incorrect: numbers = numbers.append(4) -> numbers becomes None</div>
+            <div class="text-[var(--g-success)]"># Correct:   numbers.append(4)</div>
+          </div>
+        </section>
+
+        <!-- Section 3: FAQs -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Frequently asked questions about online Python execution
+          </h2>
+
+          <div class="space-y-4 mt-4">
+            <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px]">
+              <h3 class="font-semibold text-sm text-[var(--g-ink)] mb-1">Why does input() raise an EOFError in some online runners?</h3>
+              <p class="text-xs text-[var(--g-body)] leading-relaxed">
+                Many online compilers run code in non-interactive batch jobs where standard input closes immediately. Python Code Runner avoids this by keeping an in-memory input buffer or prompting the user dynamically when input() is called.
+              </p>
+            </div>
+
+            <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px]">
+              <h3 class="font-semibold text-sm text-[var(--g-ink)] mb-1">Can I access the local hard drive from an online Python runner?</h3>
+              <p class="text-xs text-[var(--g-body)] leading-relaxed">
+                No. WebAssembly runs inside the browser security sandbox without access to host file system paths like C:\Windows. Use the Upload and Export buttons to load and save files through browser memory.
+              </p>
+            </div>
+
+            <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px]">
+              <h3 class="font-semibold text-sm text-[var(--g-ink)] mb-1">Which Python version does the browser runner execute?</h3>
+              <p class="text-xs text-[var(--g-body)] leading-relaxed">
+                The standard WebAssembly engine executes CPython 3.12.7 via Pyodide 0.26. The version selector also supports compatibility testing for Python 3.11 and Python 3.13 preview.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <section class="p-6 rounded-[12px] bg-[var(--g-canvas)] border border-[var(--g-hairline)] text-center mt-12">
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-2">Test your Python scripts in the online runner</h3>
+          <p class="text-xs text-[var(--g-mute)] max-w-lg mx-auto mb-4">
+            Fix syntax errors, inspect variable states, and verify code execution in our client-side WebAssembly workspace.
+          </p>
+          <a 
+            href="/" 
+            class="inline-flex items-center gap-2 h-9 px-5 btn-primary text-xs font-semibold rounded-full transition-all shadow-sm"
+          >
+            <span>Launch Python Code Runner</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </section>
+
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

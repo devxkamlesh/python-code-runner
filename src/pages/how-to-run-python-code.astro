@@ -1,0 +1,216 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="How to Run Python Code Online | Execution Guide"
+  description="Learn how to execute Python code online in your browser without installing software. Complete guide covering WebAssembly execution, input streams, and package imports."
+>
+  <Navbar />
+
+  <main class="flex-1 w-full bg-[var(--g-canvas)] py-10">
+    <article class="max-w-[860px] mx-auto px-4 sm:px-6">
+      
+      <!-- Breadcrumb Navigation -->
+      <nav class="flex items-center gap-2 text-xs font-mono text-[var(--g-mute)] mb-6">
+        <a href="/" class="hover:text-[var(--g-ink)] transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-[var(--g-body)]">Guides</span>
+        <span>/</span>
+        <span class="text-[var(--g-ink)]">How to run Python code online</span>
+      </nav>
+
+      <!-- Article Header -->
+      <header class="pb-8 border-b border-[var(--g-hairline)] mb-10">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--g-success-soft)] text-[var(--g-link)] border border-[var(--g-link-soft)] font-medium">
+            Execution guide
+          </span>
+          <span class="text-xs text-[var(--g-mute)] font-mono">Updated October 2026</span>
+          <span class="text-xs text-[var(--g-mute)] font-mono">•</span>
+          <span class="text-xs text-[var(--g-mute)] font-mono">5 min read</span>
+        </div>
+        
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-[-0.04em] text-[var(--g-ink)] leading-tight">
+          How to run Python code online without installation
+        </h1>
+
+        <p class="text-base text-[var(--g-body)] mt-4 leading-relaxed">
+          Modern web browsers execute CPython 3.12 directly on local hardware through WebAssembly binaries. You write code in an online editor and execute scripts without remote server queues or command line setup.
+        </p>
+
+        <!-- Quick Launch CTA Card -->
+        <div class="mt-6 p-4 rounded-[10px] bg-[var(--g-elevated)] border border-[var(--g-hairline)] shadow-[var(--g-shadow-sm)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div class="text-xs font-semibold text-[var(--g-ink)]">Ready to test Python code?</div>
+            <div class="text-xs text-[var(--g-mute)] mt-0.5">Open the interactive runner with instant client-side execution.</div>
+          </div>
+          <a 
+            href="/" 
+            class="h-9 px-4 btn-primary text-xs font-medium rounded-full flex items-center justify-center gap-1.5 transition-all shadow-sm shrink-0"
+          >
+            <span>Open Python runner</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      <!-- Article Body -->
+      <div class="space-y-10 text-sm text-[var(--g-body)] leading-relaxed">
+
+        <!-- Section 1 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Client-side WebAssembly execution architecture
+          </h2>
+          <p class="mb-4">
+            Traditional online compilers send your script over an HTTP POST request to an isolated Linux container hosted on Amazon Web Services or Google Cloud. The remote server compiles the file, runs the process, and returns raw text output. This server model introduces latency between 300ms and 2400ms per execution run.
+          </p>
+          <p class="mb-4">
+            Browser runners avoid network round-trips by shipping the CPython 3.12 interpreter as a compiled WebAssembly binary via Pyodide 0.26. Emscripten 3.1 converts the C source code of Python into WebAssembly bytecode that your local device CPU executes directly. The runtime initializes with 38.4 MB of memory in the browser heap and executes operations in single-digit milliseconds.
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Verification snippet inside browser console</div>
+            <div>import sys, platform</div>
+            <div>print("Python version:", sys.version)</div>
+            <div>print("Platform target:", platform.machine()) # returns 'wasm32'</div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Three steps to run Python scripts in a browser
+          </h2>
+          <p class="mb-4">
+            Writing and executing Python in the browser requires three discrete actions.
+          </p>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-2">Step 1: Enter your Python source code</h3>
+          <p class="mb-4">
+            Type your script into the CodeMirror 6 editor on python-code-runner.com or paste existing code from your clipboard. The editor provides line numbering, syntax coloring, automatic tab indentation, and parenthesis matching. You can create secondary files such as helper.py by clicking the New File button.
+          </p>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-2">Step 2: Configure inputs for interactive scripts</h3>
+          <p class="mb-4">
+            When your code includes calls to the built-in input() function, WebAssembly execution pauses until text arrives. You can provide inputs in advance by opening the Input tab and entering each required value on a new line. When execution begins, the runtime reads these pre-filled values in sequential order. If the input buffer is empty, a standard browser prompt dialog collects user input at runtime.
+          </p>
+
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Sample interactive program</div>
+            <div>user_name = input("Enter username: ")</div>
+            <div>login_count = int(input("Enter login count: "))</div>
+            <div>{'print(f"User {user_name} recorded {login_count + 1} total sessions.")'}</div>
+          </div>
+
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-2">Step 3: Trigger execution</h3>
+          <p class="mb-4">
+            Click the black Run Script button in the workspace toolbar or press Ctrl+Enter on Windows and Linux (Cmd+Enter on macOS). The WebAssembly interpreter parses your script into an abstract syntax tree, generates bytecode, and streams standard output to the Console tab. Execution benchmarks appear in the status pill immediately upon completion.
+          </p>
+        </section>
+
+        <!-- Section 3 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Installing PyPI packages in browser sessions
+          </h2>
+          <p class="mb-4">
+            WebAssembly runtimes do not have access to a local Linux shell or pip terminal. Browser platforms solve this constraint with micropip, a package manager built for WebAssembly environments. Micropip queries the PyPI warehouse index at pypi.org and downloads pure Python wheels or pre-compiled wasm32 binaries.
+          </p>
+          <p class="mb-4">
+            To install a package, navigate to the Packages tab, enter a package name such as sympy or scipy, and click Install. The package manager tracks four installation phases: resolving metadata, downloading wheels, unpacking archives, and mounting modules into the virtual site-packages directory. After mounting finishes, your Python scripts can import the library with standard import statements.
+          </p>
+          <div class="p-4 bg-[var(--g-canvas)] border border-[var(--g-hairline)] rounded-[8px] font-mono text-xs text-[var(--g-ink)] mb-4">
+            <div class="text-[var(--g-mute)] mb-1"># Installing and using SymPy in browser WebAssembly</div>
+            <div>import sympy as sp</div>
+            <div>x = sp.Symbol('x')</div>
+            <div>equation = sp.diff(x**3 + 2*x**2 - 5, x)</div>
+            <div>print("Derivative:", equation) # prints: 3*x**2 + 4*x</div>
+          </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Rendering charts and Matplotlib waveforms
+          </h2>
+          <p class="mb-4">
+            Desktop Python programs open graphical user interface windows through Tkinter or Qt when executing plt.show(). In a browser sandbox without an X11 display server, Matplotlib uses the headless Agg canvas backend. Python Code Runner intercepts calls to plt.show(), saves the active figure into an in-memory BytesIO buffer as a PNG image, and renders the base64 data inside the Plots tab.
+          </p>
+          <p class="mb-4">
+            Every rendered graphic includes a Download PNG link so you can save figures to your local hard drive at 120 DPI resolution.
+          </p>
+        </section>
+
+        <!-- Section 5 -->
+        <section>
+          <h2 class="text-xl font-semibold tracking-[-0.03em] text-[var(--g-ink)] mb-3">
+            Comparison between browser runners and local terminal execution
+          </h2>
+          <p class="mb-4">
+            Both execution environments possess distinct functional properties depending on project requirements.
+          </p>
+
+          <div class="overflow-x-auto rounded-[8px] border border-[var(--g-hairline)] bg-[var(--g-elevated)] mb-4">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-[var(--g-canvas)] border-b border-[var(--g-hairline)] text-[var(--g-ink)] font-semibold">
+                  <th class="py-2.5 px-3">Criteria</th>
+                  <th class="py-2.5 px-3">Browser Python runner</th>
+                  <th class="py-2.5 px-3">Local Python installation</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[var(--g-hairline)] text-[var(--g-body)]">
+                <tr>
+                  <td class="py-2.5 px-3 font-medium text-[var(--g-ink)]">Setup requirement</td>
+                  <td class="py-2.5 px-3">Zero installation</td>
+                  <td class="py-2.5 px-3">Install installer from python.org</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3 font-medium text-[var(--g-ink)]">Execution speed</td>
+                  <td class="py-2.5 px-3">Direct CPU execution via Wasm</td>
+                  <td class="py-2.5 px-3">Native machine code</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3 font-medium text-[var(--g-ink)]">Hardware access</td>
+                  <td class="py-2.5 px-3">Sandboxed browser memory</td>
+                  <td class="py-2.5 px-3">Unrestricted OS access</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3 font-medium text-[var(--g-ink)]">Multi-file support</td>
+                  <td class="py-2.5 px-3">Virtual file system in RAM</td>
+                  <td class="py-2.5 px-3">Local disk filesystem</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <section class="p-6 rounded-[12px] bg-[var(--g-canvas)] border border-[var(--g-hairline)] text-center mt-12">
+          <h3 class="text-base font-semibold text-[var(--g-ink)] mb-2">Execute Python scripts online now</h3>
+          <p class="text-xs text-[var(--g-mute)] max-w-lg mx-auto mb-4">
+            Test algorithms, run scientific calculations, and experiment with Python 3.12 without installing software.
+          </p>
+          <a 
+            href="/" 
+            class="inline-flex items-center gap-2 h-9 px-5 btn-primary text-xs font-semibold rounded-full transition-all shadow-sm"
+          >
+            <span>Launch Python Code Runner</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </section>
+
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

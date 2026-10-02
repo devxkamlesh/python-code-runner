@@ -1,11 +1,99 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import CodeRunnerApp from '../components/CodeRunnerApp.astro';
+import FeaturesGuide from '../components/FeaturesGuide.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I run Python code online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To run Python code online, write or paste your script into the editor area on python-code-runner.com and click the Run Script button (or press Ctrl+Enter). The WebAssembly interpreter executes your code in the browser and displays output in the Console tab immediately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I run a .py file?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Click the Upload button on the top file tab strip and select any local .py file from your computer. The contents load into the workspace editor where you can inspect, modify, and execute the file directly in browser memory."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I run Python code online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can run Python code online on python-code-runner.com. The platform requires no user registration, installs no local binaries, and executes code directly inside your web browser sandbox via WebAssembly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I run Python code on Windows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On Windows, you can run Python code either directly through this browser runner without any setup, or locally by installing Python from python.org and executing python script.py in PowerShell or Windows Terminal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I run Python code on a mobile phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Python Code Runner works on iOS Safari, Android Chrome, and mobile browsers. The interface adapts into a vertical stack with responsive editor controls and touch-friendly run buttons."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Python versions are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The active WebAssembly engine runs CPython 3.12 via Pyodide. The runtime dropdown in the header also provides compatibility targeting for Python 3.11 and Python 3.13 syntax."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a Python code runner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Python code runner is an execution environment that accepts Python source code, compiles it into bytecode, runs it through an interpreter, and captures the resulting standard output and standard error text for immediate review."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I use a Python code runner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Select an example script from the Examples dropdown menu, adjust the parameters or algorithms in the CodeMirror editor pane, and click Run Script. Use the Input tab if your program reads data via input()."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I run Python without installing it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Because this platform uses WebAssembly, the complete Python interpreter downloads as a client asset and executes inside your browser sandbox. You do not need administrative permissions or local Python installations."
+      }
+    }
+  ]
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout 
+  title="Python Code Runner | Python Code Running Online (Free Platform)"
+  description="Python Code Runner is a free in-browser python 3 code runner and python code running platform. Learn .py how to run, execute Python code running online with Pyodide WebAssembly, and test scripts with our python code runner in mobile."
+  keywords="python code runner, python code running online, .py how to run, python code runner in mobile, python 3 code runner, python code running platform, python online compiler, pyodide webassembly"
+  canonical="https://python-code-runner.com"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Navbar />
+  <main class="flex-1 w-full">
+    <CodeRunnerApp />
+    <FeaturesGuide />
+  </main>
 </Layout>

@@ -1,23 +1,147 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	keywords?: string;
+	canonical?: string;
+	ogImage?: string;
+	ogType?: string;
+}
+
+const {
+	title = 'Python Code Runner | Python Code Running Online (Free Platform)',
+	description = 'Python Code Runner is a free in-browser python 3 code runner and python code running platform. Learn .py how to run, execute Python code running online with Pyodide WebAssembly, and test scripts with our python code runner in mobile.',
+	keywords = 'python code runner, python code running online, .py how to run, python code runner in mobile, python 3 code runner, python code running platform, python online compiler, pyodide webassembly',
+	canonical = 'https://python-code-runner.com',
+	ogImage = 'https://python-code-runner.com/og-image.png',
+	ogType = 'website',
+} = Astro.props;
+---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<link rel="canonical" href={canonical} />
+		
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+		<meta name="author" content="Kamlesh Choudhary (devxkamlesh)" />
+
+		<!-- Geographic SEO & Regional Metadata -->
+		<meta name="geo.region" content="IN-RJ" />
+		<meta name="geo.placename" content="Jaipur" />
+		<meta name="geo.position" content="26.9124;75.7873" />
+		<meta name="ICBM" content="26.9124, 75.7873" />
+
+		<!-- LLMs.txt & Agentic Discovery -->
+		<link rel="describedby" type="text/markdown" href="/llms.txt" />
+
+		<!-- OpenGraph / Facebook -->
+		<meta property="og:site_name" content="Python Code Runner" />
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Python Code Runner - Python 3 Code Running Platform in Browser" />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@devxkamlesh" />
+		<meta name="twitter:creator" content="@devxkamlesh" />
+		<meta name="twitter:url" content={canonical} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content="Python Code Runner" />
+
+		<!-- Fonts: Geist Sans & Geist Mono -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+		<!-- Dark mode: apply .dark before first paint to prevent flash -->
+		<script is:inline>
+			(function() {
+				var stored = localStorage.getItem('theme');
+				if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+					document.documentElement.classList.add('dark');
+				}
+			})();
+		</script>
+
+		<!-- Pyodide WebAssembly runtime -->
+		<script is:inline src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+
+		<!-- Structured Data: Schema.org Graph (E-E-A-T Person & SoftwareApplication) -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": "WebSite",
+					"@id": "https://python-code-runner.com/#website",
+					"name": "Python Code Runner",
+					"url": "https://python-code-runner.com"
+				},
+				{
+					"@type": "Person",
+					"@id": "https://python-code-runner.com/#author",
+					"name": "Kamlesh Choudhary",
+					"alternateName": "devxkamlesh",
+					"url": "https://x.com/devxkamlesh",
+					"image": "https://python-code-runner.com/author.jpg",
+					"jobTitle": "Full Stack Engineer & AI Systems Architect",
+					"alumniOf": {
+						"@type": "EducationalOrganization",
+						"name": "Mahatma Jyoti Rao Phoole University (MJRPU)"
+					},
+					"address": {
+						"@type": "PostalAddress",
+						"addressLocality": "Jaipur",
+						"addressRegion": "Rajasthan",
+						"postalCode": "302019",
+						"addressCountry": "IN"
+					},
+					"sameAs": [
+						"https://in.linkedin.com/in/devxkamlesh",
+						"https://x.com/devxkamlesh",
+						"https://github.com/devxkamlesh"
+					]
+				},
+				{
+					"@type": "SoftwareApplication",
+					"@id": "https://python-code-runner.com/#software",
+					"name": "Python Code Runner",
+					"applicationCategory": "DeveloperApplication",
+					"operatingSystem": "Any",
+					"author": {
+						"@id": "https://python-code-runner.com/#author"
+					},
+					"creator": {
+						"@id": "https://python-code-runner.com/#author"
+					},
+					"offers": {
+						"@type": "Offer",
+						"price": "0",
+						"priceCurrency": "USD"
+					},
+					"description": description,
+					"url": canonical
+				}
+			]
+		})} />
 	</head>
-	<body>
+	<body class="min-h-screen flex flex-col font-sans" style="background-color: var(--g-canvas); color: var(--g-ink);">
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

@@ -1,0 +1,468 @@
+@import "tailwindcss";
+
+/* ================================================================
+   DESIGN SYSTEM TOKENS (from DESIGN.md)
+   All colors, radii, shadows are defined as CSS custom properties.
+   Components reference these via var(--g-*) for automatic dark mode.
+   ================================================================ */
+
+@theme {
+  --font-sans: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', 'Fira Code', Menlo, monospace;
+
+  --color-canvas: var(--g-canvas);
+  --color-canvas-elevated: var(--g-elevated);
+  --color-hairline: var(--g-hairline);
+  --color-hairline-soft: var(--g-hairline-soft);
+  --color-ink: var(--g-ink);
+  --color-ink-primary: var(--g-ink);
+  --color-body: var(--g-body);
+  --color-mute: var(--g-mute);
+  --color-faint: var(--g-faint);
+
+  --color-link: var(--g-link);
+  --color-link-deep: var(--g-link-deep);
+  --color-link-soft: var(--g-link-soft);
+
+  --color-error: var(--g-error);
+  --color-error-deep: var(--g-error-deep);
+  --color-warning: var(--g-warning);
+  --color-warning-soft: var(--g-warning-soft);
+  --color-warning-deep: #ab570a;
+
+  --color-success: var(--g-success);
+  --color-success-soft: var(--g-success-soft);
+
+  --color-brand-violet: #7928ca;
+  --color-brand-cyan: #50e3c2;
+  --color-brand-pink: #ff0080;
+  --color-brand-magenta: #eb367f;
+  --color-brand-amber: #f9cb28;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill-cat: 64px;
+  --radius-pill: 100px;
+}
+
+/* ================================================================
+   LIGHT THEME (default)
+   ================================================================ */
+:root {
+  --font-display-tracking: -0.05em;
+  --font-heading-tracking: -0.03em;
+
+  /* Surface */
+  --g-canvas: #fafafa;
+  --g-elevated: #ffffff;
+
+  /* Text */
+  --g-ink: #171717;
+  --g-body: #4d4d4d;
+  --g-mute: #8f8f8f;
+  --g-faint: #a1a1a1;
+
+  /* Borders */
+  --g-hairline: #ebebeb;
+  --g-hairline-soft: #f2f2f2;
+
+  /* Accent */
+  --g-link: #0070f3;
+  --g-link-deep: #0761d1;
+  --g-link-soft: #d3e5ff;
+
+  /* Semantic */
+  --g-error: #ee0000;
+  --g-error-deep: #c50000;
+  --g-warning: #f5a623;
+  --g-warning-soft: #ffefcf;
+  --g-success: #10b981;
+  --g-success-soft: #dcfce7;
+
+  /* On-primary & Primary Button */
+  --g-on-primary: #ffffff;
+  --g-btn-primary-bg: #171717;
+  --g-btn-primary-text: #ffffff;
+  --g-btn-primary-hover: #262626;
+
+  /* Elevation shadows */
+  --g-shadow-sm: 0px 1px 1px rgba(0,0,0,0.04);
+  --g-shadow-md: 0px 2px 2px rgba(0,0,0,0.04), 0px 8px 16px -4px rgba(0,0,0,0.06);
+  --g-shadow-lg: 0px 4px 8px rgba(0,0,0,0.06), 0px 16px 32px -8px rgba(0,0,0,0.08);
+
+  /* Console specific */
+  --g-console-bg: #fafafa;
+  --g-console-input-bg: #edf6ff;
+
+  /* Selection */
+  --g-selection-bg: #d3e5ff;
+  --g-selection-text: #171717;
+
+  /* Scrollbar */
+  --g-scrollbar-thumb: #d4d4d4;
+  --g-scrollbar-thumb-hover: #a1a1a1;
+
+  color-scheme: light;
+}
+
+/* ================================================================
+   DARK THEME
+   Applied via .dark class on <html> element
+   ================================================================ */
+.dark {
+  /* Surface */
+  --g-canvas: #0a0a0a;
+  --g-elevated: #171717;
+
+  /* Text */
+  --g-ink: #ededed;
+  --g-body: #a1a1a1;
+  --g-mute: #6b6b6b;
+  --g-faint: #525252;
+
+  /* Borders */
+  --g-hairline: #2e2e2e;
+  --g-hairline-soft: #1a1a1a;
+
+  /* Accent */
+  --g-link: #3b9eff;
+  --g-link-deep: #60b0ff;
+  --g-link-soft: #1a2e44;
+
+  /* Semantic */
+  --g-error: #ff4d4d;
+  --g-error-deep: #ff6b6b;
+  --g-warning: #f5a623;
+  --g-warning-soft: #2a1f0c;
+  --g-success: #34d399;
+  --g-success-soft: #0d2818;
+
+  /* On-primary & Primary Button */
+  --g-on-primary: #0a0a0a;
+  --g-btn-primary-bg: #ededed;
+  --g-btn-primary-text: #0a0a0a;
+  --g-btn-primary-hover: #ffffff;
+
+  /* Elevation shadows */
+  --g-shadow-sm: 0px 1px 2px rgba(0,0,0,0.3);
+  --g-shadow-md: 0px 2px 4px rgba(0,0,0,0.3), 0px 8px 16px -4px rgba(0,0,0,0.4);
+  --g-shadow-lg: 0px 4px 8px rgba(0,0,0,0.4), 0px 16px 32px -8px rgba(0,0,0,0.5);
+
+  /* Console specific */
+  --g-console-bg: #0a0a0a;
+  --g-console-input-bg: #111827;
+
+  /* Selection */
+  --g-selection-bg: #1a2e44;
+  --g-selection-text: #ededed;
+
+  /* Scrollbar */
+  --g-scrollbar-thumb: #3a3a3a;
+  --g-scrollbar-thumb-hover: #555555;
+
+  color-scheme: dark;
+}
+
+/* ================================================================
+   BASE STYLES
+   ================================================================ */
+body {
+  background-color: var(--g-canvas);
+  color: var(--g-ink);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+::selection {
+  background-color: var(--g-selection-bg);
+  color: var(--g-selection-text);
+}
+
+/* ================================================================
+   HERO MESH GRADIENT (DESIGN.md decorative system)
+   The only chromatic flourish allowed. Confined to hero section.
+   ================================================================ */
+.geist-mesh-gradient {
+  background: radial-gradient(circle at 15% 15%, rgba(80, 227, 194, 0.15) 0%, transparent 45%),
+              radial-gradient(circle at 85% 15%, rgba(0, 124, 240, 0.16) 0%, transparent 45%),
+              radial-gradient(circle at 35% 85%, rgba(121, 40, 202, 0.13) 0%, transparent 50%),
+              radial-gradient(circle at 75% 75%, rgba(235, 54, 127, 0.12) 0%, transparent 45%),
+              radial-gradient(circle at 95% 85%, rgba(249, 203, 40, 0.10) 0%, transparent 40%);
+}
+
+.dark .geist-mesh-gradient {
+  background: radial-gradient(circle at 15% 15%, rgba(80, 227, 194, 0.08) 0%, transparent 45%),
+              radial-gradient(circle at 85% 15%, rgba(0, 124, 240, 0.09) 0%, transparent 45%),
+              radial-gradient(circle at 35% 85%, rgba(121, 40, 202, 0.07) 0%, transparent 50%),
+              radial-gradient(circle at 75% 75%, rgba(235, 54, 127, 0.06) 0%, transparent 45%),
+              radial-gradient(circle at 95% 85%, rgba(249, 203, 40, 0.05) 0%, transparent 40%);
+}
+
+/* ================================================================
+   CODEMIRROR EDITOR STYLES
+   ================================================================ */
+.cm-editor {
+  height: 100%;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  background-color: var(--g-elevated);
+}
+
+.cm-editor .cm-scroller {
+  font-family: var(--font-mono);
+  line-height: 1.6;
+}
+
+.cm-editor .cm-gutters {
+  background-color: var(--g-canvas);
+  border-right: 1px solid var(--g-hairline);
+  color: var(--g-mute);
+  padding-right: 8px;
+}
+
+.cm-editor .cm-activeLineGutter {
+  background-color: var(--g-hairline-soft);
+  color: var(--g-ink);
+}
+
+.cm-editor .cm-activeLine {
+  background-color: var(--g-canvas);
+}
+
+.cm-editor.cm-focused {
+  outline: none;
+}
+
+.cm-editor .cm-cursor {
+  border-left: 2px solid var(--g-ink);
+}
+
+.cm-editor .cm-selectionBackground,
+.cm-editor ::selection {
+  background-color: var(--g-selection-bg) !important;
+}
+
+/* CodeMirror Autocomplete Tooltip Styles */
+.cm-tooltip {
+  border: 1px solid var(--g-hairline) !important;
+  background-color: var(--g-elevated) !important;
+  border-radius: 8px !important;
+  box-shadow: var(--g-shadow-md) !important;
+  z-index: 100 !important;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.cm-tooltip-autocomplete {
+  min-width: 220px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.cm-tooltip-autocomplete ul {
+  padding: 4px !important;
+  margin: 0 !important;
+  list-style: none;
+}
+
+.cm-tooltip-autocomplete ul li {
+  padding: 5px 8px !important;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--g-ink);
+  cursor: pointer;
+  line-height: 1.4;
+  transition: background-color 0.1s ease;
+}
+
+.cm-tooltip-autocomplete ul li[aria-selected] {
+  background-color: var(--g-hairline-soft) !important;
+  color: var(--g-link) !important;
+}
+
+.cm-completionLabel {
+  font-weight: 500;
+}
+
+.cm-completionMatchedText {
+  text-decoration: none !important;
+  color: var(--g-link) !important;
+  font-weight: 700;
+}
+
+.cm-completionDetail {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--g-mute);
+  font-style: italic;
+}
+
+.cm-completionIcon {
+  width: 14px;
+  opacity: 0.65;
+  margin-right: 4px;
+}
+
+.cm-completionIcon-variable::after { content: "v"; color: #0070f3; font-weight: bold; }
+.cm-completionIcon-function::after { content: "f"; color: #7928ca; font-weight: bold; }
+.cm-completionIcon-class::after { content: "c"; color: #eb367f; font-weight: bold; }
+.cm-completionIcon-keyword::after { content: "k"; color: #ab570a; font-weight: bold; }
+
+/* ================================================================
+   CUSTOM SCROLLBARS
+   ================================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--g-scrollbar-thumb);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--g-scrollbar-thumb-hover);
+}
+
+/* ================================================================
+   ANIMATIONS (Package Installation, Version Switching, etc.)
+   ================================================================ */
+@keyframes shimmerBar {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.2); }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes checkBounce {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes ringPulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 112, 243, 0.45); }
+  70% { box-shadow: 0 0 0 8px rgba(0, 112, 243, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 112, 243, 0); }
+}
+
+@keyframes ringPulseGreen {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes logSlide {
+  0% { opacity: 0; transform: translateY(3px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dataStream {
+  0% { transform: translateX(-100%); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+@keyframes versionSwapFlash {
+  0% { border-color: var(--g-hairline); }
+  35% { border-color: var(--g-link); box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.18); }
+  100% { border-color: var(--g-hairline); box-shadow: none; }
+}
+
+@keyframes pulseBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
+
+.animate-shimmer {
+  animation: shimmerBar 1.5s infinite linear;
+}
+
+.animate-pop-in {
+  animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 1.4s infinite ease-in-out;
+}
+
+.animate-check-bounce {
+  animation: checkBounce 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-ring-pulse {
+  animation: ringPulse 1.4s infinite ease-out;
+}
+
+.animate-ring-pulse-green {
+  animation: ringPulseGreen 1.6s infinite ease-out;
+}
+
+.animate-log-slide {
+  animation: logSlide 0.2s ease-out forwards;
+}
+
+.animate-data-stream {
+  animation: dataStream 1.2s infinite ease-in-out;
+}
+
+.animate-version-swap-flash {
+  animation: versionSwapFlash 1.2s ease-in-out forwards;
+}
+
+.animate-pulse-blink {
+  animation: pulseBlink 0.9s infinite ease-in-out;
+}
+
+/* ================================================================
+   DARK MODE TOGGLE TRANSITION
+   Smooth color transition on all themed elements
+   ================================================================ */
+.dark-transition,
+.dark-transition *,
+.dark-transition *::before,
+.dark-transition *::after {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* ================================================================
+   PRIMARY BUTTON UTILITIES (DESIGN.md)
+   ================================================================ */
+.btn-primary {
+  background-color: var(--g-btn-primary-bg) !important;
+  color: var(--g-btn-primary-text) !important;
+  border: 1px solid transparent;
+  transition: background-color 0.15s ease, opacity 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--g-btn-primary-hover) !important;
+}
+
+.btn-primary:active:not(:disabled) {
+  background-color: var(--g-btn-primary-bg) !important;
+}
+
+.btn-primary svg {
+  color: inherit;
+}

@@ -1,0 +1,25 @@
+# Python Code Runner
+
+> Free client-side Python 3.12 execution platform running CPython in browser WebAssembly via Pyodide 0.26.4. Supports multi-file projects, interactive inputs, Matplotlib plotting, and micropip package installations with zero server latency.
+
+Python Code Runner compiles and evaluates Python 3 code directly on client device processor threads. All execution occurs inside an isolated WebAssembly sandbox adhering to W3C WebAssembly Core Specification 2.0. The platform stores user scripts in volatile browser memory (MEMFS) without transmitting code to external servers.
+
+Developer: Kamlesh Choudhary (@devxkamlesh), Full Stack Engineer & AI Systems Architect educated at Mahatma Jyoti Rao Phoole University (MJRPU) in Jaipur, India.
+
+## Core Platform
+
+- [Python Code Runner](https://python-code-runner.com/): Interactive in-browser Python 3.12 runner, editor, and console.
+- [Tutorials](https://python-code-runner.com/tutorials): Programming lessons and example code.
+- [Runtime Methodology](https://python-code-runner.com/methodology): Formal specification of runtime architecture, language compliance, precision, and security boundaries.
+
+## Execution Guides
+
+- [Online Python Execution](https://python-code-runner.com/how-to-run-python-code): Technical manual for browser-based WebAssembly code execution.
+- [How to Run .py Files](https://python-code-runner.com/how-to-run-py-file): File upload mechanics and command-line execution.
+- [Windows Execution Guide](https://python-code-runner.com/python-code-runner-windows): Complete guide for executing Python on Windows 10 and Windows 11.
+- [Common Python Errors & FAQs](https://python-code-runner.com/common-python-errors-faqs): Solutions for SyntaxError, NameError, TypeError, and IndentationError.
+
+## Documentation and Standards
+
+- [Full Technical Reference](https://python-code-runner.com/llms-full.txt): Complete architectural specifications, supported packages, and execution parameters formatted for language models.
+- [Sitemap](https://python-code-runner.com/sitemap.xml): Machine-readable index of all website routes.

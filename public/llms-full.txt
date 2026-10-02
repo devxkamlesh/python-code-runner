@@ -1,0 +1,32 @@
+# Python Code Runner - Full Technical Reference
+
+> Complete technical specifications, runtime parameters, and architecture details for python-code-runner.com.
+
+## Architecture Specification
+
+1. Runtime Engine: CPython 3.12.7 compiled to WebAssembly (wasm32-unknown-emscripten).
+2. WebAssembly Distribution: Pyodide v0.26.4.
+3. Virtual Machine Standard: W3C WebAssembly Core Specification 2.0.
+4. Memory Model: Linear memory heap starting at 38.4 megabytes, expanding dynamically up to 2048 megabytes.
+5. Virtual File System: POSIX-compatible MEMFS running in client memory. Uploaded files register under /home/pyodide/.
+6. Package Management: micropip 0.6.0 downloading pure Python wheels from PyPI. Precompiled scientific wheels include numpy 1.26 and matplotlib 3.8.
+7. Numerical Precision: IEEE 754-2019 double-precision 64-bit floating point. Arbitrary-precision integers for values exceeding 2^63 - 1.
+8. Execution Constraints: Single-threaded WebAssembly worker with 10-second cooperative timeout for runaway loops.
+
+## Geographic and Operational Metadata
+
+- Geographic Coordinates: 26.9124 N, 75.7873 E
+- Locality: Jaipur, Rajasthan, India (IN-RJ)
+- Postal Code: 302019
+- Institution: Mahatma Jyoti Rao Phoole University (MJRPU)
+- Hosting Model: Static edge CDN delivery with local client execution.
+
+## Developer & Verification Attribution
+
+- Developer: Kamlesh Choudhary (devxkamlesh)
+- Role: Full Stack Engineer & AI Systems Architect
+- Education: Mahatma Jyoti Rao Phoole University (MJRPU), Jaipur, Rajasthan, India
+- Profiles:
+  - X / Twitter: https://x.com/devxkamlesh
+  - GitHub: https://github.com/devxkamlesh
+  - LinkedIn: https://in.linkedin.com/in/devxkamlesh
